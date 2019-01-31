@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AddNewTask from './AddNewTask';
 import TasksList from './TasksList';
 import EditForm from './EditForm';
@@ -9,10 +10,18 @@ function App() {
   const [editFormOpen, setEditFormOpen] = useState(false);
   const [toEdit, setToEdit] = useState({});
 
+  useEffect(async () => {
+    const result = await axios(
+      'http://localhost:3001/api/getData',
+    );
+    console.log(result.data);
+  });
+
   function startTasks() {
+    // here should be: determine where the later information (API or LocalStorage) is to enter it into tasks startTasks
     let returnLocalStorage = JSON.parse(localStorage.getItem("allTasksInLocalStorage"));
     if (returnLocalStorage){
-      return returnLocalStorage.allTasks
+      return returnLocalStorage.allTasks;
     } else {
       return [
           {
