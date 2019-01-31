@@ -1,0 +1,37 @@
+.сontainer {
+  width: 430px;
+  margin: 0 auto;
+}
+
+.task{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.taskDone{
+  text-decoration: line-through;
+}
+
+.displayNone{
+  display: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+input{
+  width: 207px;
+}
+
+p, input {
+  font-size: 1.3rem !important;
+}
