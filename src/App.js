@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import AddNewTask from './AddNewTask';
 import TasksList from './TasksList';
 import EditForm from './EditForm';
