@@ -10,15 +10,7 @@ function App() {
   const [editFormOpen, setEditFormOpen] = useState(false);
   const [toEdit, setToEdit] = useState({});
 
-  useEffect(async () => {
-    const result = await axios(
-      'http://localhost:3001/api/getData',
-    );
-    console.log(result.data);
-  });
-
   function startTasks() {
-    // here should be: determine where the later information (API or LocalStorage) is to enter it into tasks startTasks
     let returnLocalStorage = JSON.parse(localStorage.getItem("allTasksInLocalStorage"));
     if (returnLocalStorage){
       return returnLocalStorage.allTasks;
