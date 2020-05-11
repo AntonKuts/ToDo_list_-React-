@@ -2,13 +2,14 @@ import  React, { useState } from 'react';
 import './App.css';
 import { Button } from 'react-materialize'
 
-function AddNewTask({ addTasks }) {
+const AddNewTask = ({ addTasks }) => {
   const [value, setValue] = useState("");
   const handleSubmit = e => {
     e.preventDefault();
-    if (!value) return;
-    addTasks(value);
-    setValue("");
+    if (value) {
+        addTasks(value);
+        setValue("");
+    }
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -20,9 +21,9 @@ function AddNewTask({ addTasks }) {
         placeholder="Write a new task"
         maxLength="20"
       />
-      <Button>Save or Enter</Button>
+      <Button>Save (Enter)</Button>
     </form>
   );
-}
+};
 
 export default AddNewTask;

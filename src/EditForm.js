@@ -2,32 +2,36 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button } from 'react-materialize'
 
-function EditForm({ addTasks, toEdit, setEditFormOpen, addEditTasks }) {
+const EditForm = ({ toEdit, addEditTasks, setToEdit }) => {
   const [value, setValue] = useState(toEdit.text);
   const handleSubmit = e => {
     e.preventDefault();
-    if (!value) return;
-    addEditTasks(toEdit.index, value);
-    setEditFormOpen(false);
+    if (value) {
+        addEditTasks(toEdit.index, value);
+        setToEdit({});
+    }
   };
 
   return (
     <div className="edit">
       <form onSubmit={handleSubmit}>
-      <p>For edit № {toEdit.index+1}</p>
-        <input
-          key={toEdit.text}
-          type="text"
-          className="input"
-          value={value}
-          onChange={e => setValue(e.target.value)}
-          maxLength="20"
-        />
-        <Button>Save changes or Enter</Button>
+        <div className="editLine">
+            <p> {toEdit.index+1}. </p>
+            <input
+              key={toEdit.text}
+              type="text"
+              className="input"
+              value={value}
+              onChange={e => setValue(e.target.value)}
+              maxLength="20"
+            />
+            <p> {toEdit.completed && " (done)"} </p>
+        </div>
+        <Button>Save changes (Enter)</Button>
       </form>
-      <Button onClick={() =>setEditFormOpen(false)}>cancel</Button>
+      <Button onClick={() => setToEdit({})}> cancel </Button>
     </div>
   );
-}
+};
 
 export default EditForm;
